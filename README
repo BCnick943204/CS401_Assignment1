@@ -1,0 +1,14 @@
+Nick Passantino
+CS401 Assignment 1
+
+The PDF includes some scratch notes I took on the assignment pages
+I printed out, as well as the pages which show my work.
+
+O() for algorithms:
+
+TrailingZeros: O(logn)
+PatternMatching: (n is length of text minus pattern)
+ 4 + n(1 + n(3)) 
+= 4 + 3n^2 + n
+
+O(n^2)
