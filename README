@@ -1,14 +1,26 @@
 Nick Passantino
 CS401 Assignment 1
 
-The PDF includes some scratch notes I took on the assignment pages
-I printed out, as well as the pages which show my work.
+Algorithm Analysis:
 
-O() for algorithms:
+Exercise1412.java
+n is the smaller of the lengths of a[] and b[]
+O(n), since in the worst case the
+algorithm goes entirely through only the smaller of the arrays
+(or both if they're the same length)
 
-TrailingZeros: O(logn)
-PatternMatching: (n is length of text minus pattern)
- 4 + n(1 + n(3)) 
-= 4 + 3n^2 + n
+Exercise1418.java
+n is the size of a[]
+O(log(n)), because the space searched in the
+array is halved each time an index is checked
 
-O(n^2)
+StringPatternMatcher.java
+n is the length of the String being searched
+O(n), because the string is searched linearly, and at 
+each index a calculation is done that does not depend on the length 
+of either string
+
+TrailingZeros.java
+O(log(n)^2), because the while() loop runs log(n) times,
+and at each run of the loop a calculation is done that is log(n) 
+(I am assuming that Math.log() runs in O(log(n)) )
