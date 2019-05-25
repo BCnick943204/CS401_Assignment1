@@ -2,95 +2,40 @@ package passantino_CS401_A1;
 
 public class Exercise1412 {
 
-	/* Uses a bare bones BST to store the values and print them in order
-	 * 
-	 * 
+	/* Takes two sorted int arrays and returns the 
+	 * elements that they have in common
 	 */
 	public void getEqualValues(int[] a, int[] b) {
-		BST bst = new BST();
-		for(int i=0; i < a.length; i++) {
-			for(int j=0; j<b.length; j++) {
-				if(a[i] == b[j])
-					bst.insertNode(new Node(a[i]));
-			}
-		}
-		bst.printInOrder();
+		//return if a[] is completely out of the 
+		//bounds of b[]
+	if(a[0] > b[b.length-1] || a[a.length-1] < b[0]) {
+		System.out.println("No matching elements");
+		return;
 	}
+	//Goes through a[] and compares each element, a[i], 
+	//to an element of b[], b[bIndex]. If a given
+	//element a[i] is greater than an element b[bIndex]
+	//the next element should be compared until the elements
+	//are equal, b[] has no more elements, or a[i] < b[bIndex]
+	//in which case the next element of a is selected
+	int bIndex = 0;
 	
-	
-	
-	
-	
-	
-	
-	private class BST{
-		Node root = null;
+	for(int i=0; i<a.length; i++) {
 		
-		public void insertNode(Node node) {
-			if(root == null)
-				root = node;
-			insertNode(root, node);
+		while(a[i] > b[bIndex])
+			bIndex++;
+		
+		if(a[i] == b[bIndex]) {
+			System.out.println(a[i]);
+			bIndex++;
 		}
-		private void insertNode(Node root, Node node) {
-			if(root == null)
-				return;
-			else if(node.value < root.value) {
-				if(root.getLeft() == null)
-					root.setLeft(node);
-				
-				insertNode(root.getLeft(), node);
-				
-			}else if(node.value > root.value){
-				if(root.getRight() == null)
-				root.setRight(node);
-				
-				insertNode(root.getRight(), node);
+		
+		//end the loop if b[] has no more elements
+		if(bIndex >= b.length)
+			break;
+	}
+		
+	}
 
-			}
-			}
-			
-		
-		public void printInOrder() {
-			printInOrder(root);
-		}
-		private void printInOrder(Node n) {
-			if(n == null)
-				return;
-			printInOrder(n.getLeft());
-			System.out.println(n.getValue());
-			printInOrder(n.getRight());
-		}
-		
-		
-	}
-	private class Node{
-		int value;
-		Node right;
-		Node left;
-		public Node(int value) {
-			this.value = value;
-			this.right = null;
-			this.left = null;
-		}
-		public int getValue() {
-			return value;
-		}
-		public void setValue(int value) {
-			this.value = value;
-		}
-		public Node getRight() {
-			return right;
-		}
-		public void setRight(Node right) {
-			this.right = right;
-		}
-		public Node getLeft() {
-			return left;
-		}
-		public void setLeft(Node left) {
-			this.left = left;
-		}
-		
-		
-	}
+	
 }

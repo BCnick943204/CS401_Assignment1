@@ -2,28 +2,40 @@ package passantino_CS401_A1;
 
 public class StringPatternMatcher {
 	public static void match(String t, String p) {
-		String found = null;
+		//Indexes where the first char of the
+		//pattern is in the string if it is found
+		//if firstChar is -1 then no pattern has begun to 
+		//be found
 		int firstChar = -1;
-		int i=0;
-		int j=0;
-		for(;i<=(t.length()-p.length()); i++) {
+		//pIndex keeps track of how many characters
+		//in a row have matched the pattern
+		int pIndex=0;
+		
+		for(int i=0;i<t.length(); i++) {
 				
-				if(t.charAt(i) == p.charAt(j)) {
-					if(firstChar == -1)
-						firstChar = i;
+			//if pIndex is equal to p.length()
+			//the pattern has been found
+			if(pIndex == p.length())
+				break;
+			
+				if(t.charAt(i) == p.charAt(pIndex)) {
 					
-					found += t.charAt(i);
-					j++;
+					if(firstChar == -1) //no pattern has been found
+						firstChar = i;
+										
+					pIndex++;
 				} else {
-					found = null;
 					firstChar = -1;
-					j = 0;
+					pIndex = 0;
 				}
 
 		}
-		if(found != null)
+
+		if(pIndex == p.length()) {
 			System.out.println("Pattern Found at " + firstChar + ", " + (firstChar + (p.length()-1)));
+		}else
+			System.out.println("No pattern was found");
+
 	}
 	
-	//private static void checkForChar(char c, string )
 }
